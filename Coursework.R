@@ -78,28 +78,6 @@ last_kill<-seq(from=min(mysample3$AgeLastKill),
                 to=max(mysample3$AgeLastKill),by=0.1)
 lines(last_kill,dnorm(last_kill,last_kill_u,last_kill_sd),col='red')
 
-#plot(hist(mysample3$CareerDuration),main="Career Duration Normal Distribution"
-#     ,xlab='Career Duration in Years',freq=FALSE,border='blue')
-#career_dur<-seq(from=min(mysample3$CareerDuration),
-#               to=max(mysample3$CareerDuration),by=0.1)
-#lines(career_dur,dnorm(career_dur,career_dur_u,career_dur_sd),col='red')
-
-#Exponential distribution
-#first_kill_lambda=1/first_kill_u
-#plot(hist(mysample3$AgeFirstKill),main="Age at First Kill Exponential Distribution"
-#     ,xlab='Age in Years',freq=FALSE)
-#first_kill<-seq(from=min(mysample3$AgeFirstKill),
-#                to=max(mysample3$AgeFirstKill),by=0.1)
-#lines(first_kill,dexp(first_kill,first_kill_lambda,log=FALSE))
-
-#last_kill_lambda=1/last_kill_u
-#last_kill_sd=sd(mysample3$AgeLastKill)
-#plot(hist(mysample3$AgeLastKill),main="Age at Last Kill Exponential Distribution"
-#     ,xlab='Age in Years',freq=FALSE)
-#last_kill<-seq(from=min(mysample3$AgeLastKill),
-#               to=max(mysample3$AgeLastKill),by=0.1)
-#lines(last_kill,dexp(last_kill,last_kill_lambda))
-
 career_dur_lambda=1/career_dur_u
 plot(hist(mysample3$CareerDuration),main="Career Duration Exponential Distribution"
      ,xlab='Career Duration in Years',freq=FALSE,border = 'blue')
@@ -112,70 +90,24 @@ summary(mysample3[mysample3$Motive=='Angel of Death',]$AgeFirstKill)
 summary(mysample3[mysample3$Motive=='Robbery or financial gain',]$AgeFirstKill)
 summary(mysample3[mysample3$Motive=='Unknown',]$AgeFirstKill)
 
-#Fn1 <- ecdf(mysample3[mysample3$Motive=='Angel of Death',]$AgeFirstKill)
-
 # Estimates of mu and sigma:
 mu1 <- mean(mysample3[mysample3$Motive=='Angel of Death',]$AgeFirstKill)
 sigma1 <- sd(mysample3[mysample3$Motive=='Angel of Death',]$AgeFirstKill)
 
-# CDF of a normal distribution with the 
-# estimated parameters:
-
-#G1 <- function(x){
-#        return(pnorm(x, mean = mu1, sd = sigma1))
-#}
-
-#plot(Fn1, verticals = TRUE, pch = NA)
-#x1 <- 1:100
-#lines(x1, G1(x1), col = "red")
-
-#ks.test(x=mysample3[mysample3$Motive=='Angel of Death',]$AgeFirstKill,
-#        y='pnorm',mean = mu1, sd = sigma1)
-
 qqnorm(mysample3[mysample3$Motive=='Angel of Death',]$AgeFirstKill)
 qqline(mysample3[mysample3$Motive=='Angel of Death',]$AgeFirstKill,col='blue')
-
-#Fn2 <- ecdf(mysample3[mysample3$Motive=='Robbery or financial gain',]$AgeFirstKill)
 
 # Estimates of mu and sigma:
 mu2 <- mean(mysample3[mysample3$Motive=='Robbery or financial gain',]$AgeFirstKill)
 sigma2 <- sd(mysample3[mysample3$Motive=='Robbery or financial gain',]$AgeFirstKill)
 
-# CDF of a normal distribution with the 
-# estimated parameters:
-
-#G2 <- function(x){
-#        return(pnorm(x, mean = mu2, sd = sigma2))
-#}
-
-#plot(Fn2, verticals = TRUE, pch = NA)
-#x2 <- 1:100
-#lines(x2, G2(x2), col = "red")
-
-#ks.test(x=mysample3[mysample3$Motive=='Robbery or financial gain',]$AgeFirstKill,
-#        y='pnorm',mean=mu2,sd=sigma2)
-
 qqnorm(mysample3[mysample3$Motive=='Robbery or financial gain',]$AgeFirstKill)
 qqline(mysample3[mysample3$Motive=='Robbery or financial gain',]$AgeFirstKill,col='blue')
-
-
-#Fn3 <- ecdf(mysample3[mysample3$Motive=='Unknown',]$AgeFirstKill)
 
 # Estimates of mu and sigma:
 mu3 <- mean(mysample3[mysample3$Motive=='Unknown',]$AgeFirstKill)
 sigma3 <- sd(mysample3[mysample3$Motive=='Unknown',]$AgeFirstKill)
 
-# CDF of a normal distribution with the 
-# estimated parameters:
-
-#G3 <- function(x){
-#        return(pnorm(x, mean = mu3, sd = sigma3))
-#}
-
-#plot(Fn3, verticals = TRUE, pch = NA)
-#x3 <- 1:100
-#lines(x3, G3(x3), col = "red")
-#ks.test(x=mysample3[mysample3$Motive=='Unknown',]$AgeFirstKill,y='pnorm',mean = mu3, sd = sigma3)
 
 qqnorm(mysample3[mysample3$Motive=='Unknown',]$AgeFirstKill)
 qqline(mysample3[mysample3$Motive=='Unknown',]$AgeFirstKill,col='blue')
